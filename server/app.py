@@ -35,6 +35,7 @@ class Index(Resource):
 
 api.add_resource(Index, '/')
 
+
 class Newsletters(Resource):
 
     def get(self):
@@ -45,6 +46,7 @@ class Newsletters(Resource):
             jsonify(response_dict_list),
             200,
         )
+        
 
         return response
 
