@@ -1,3 +1,5 @@
+# newsletters/app.py
+
 #!/usr/bin/env python3
 
 from flask import Flask, jsonify, request, make_response
@@ -14,11 +16,7 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 migrate = Migrate(app, db)
 db.init_app(app)
 
-
-
 api = Api(app)
-
-
 
 class Index(Resource):
 
@@ -33,14 +31,11 @@ class Index(Resource):
             200,
         )
 
-
-
         return response
 
 api.add_resource(Index, '/')
 
 class Newsletters(Resource):
-
 
     def get(self):
 
@@ -51,8 +46,6 @@ class Newsletters(Resource):
             200,
         )
 
-
-
         return response
 
     def post(self):
@@ -61,7 +54,6 @@ class Newsletters(Resource):
             title=request.form['title'],
             body=request.form['body'],
         )
-
 
 
         db.session.add(new_record)
@@ -75,8 +67,8 @@ class Newsletters(Resource):
         )
 
 
-
         return response
+
 
 api.add_resource(Newsletters, '/newsletters')
 
